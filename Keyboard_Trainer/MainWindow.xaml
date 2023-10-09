@@ -1,0 +1,169 @@
+﻿<Window x:Class="Keyboard_Trainer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="460" Width="800"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        PreviewKeyUp="Window_PreviewKeyUp"
+        PreviewTextInput="Window_PreviewTextInput">
+    <Grid Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="300"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*" />
+            <ColumnDefinition Width="200*" />
+            <ColumnDefinition Width="200*" />
+            <ColumnDefinition Width="47*" />
+            <ColumnDefinition Width="153*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Перший рядок -->
+        <Label 
+               Name="LabelChars"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Content="Speed: 0 chars/min" />
+        <Label 
+               Name="LabelMistakes"
+               Grid.Column="1" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Content= "0 mistakes" />
+        <Grid Grid.Row="0" Grid.Column="2">
+            <ScrollBar Grid.Row="0" 
+               Minimum="1"
+               Maximum="3"
+               SmallChange="1"
+               LargeChange="1"
+               Orientation="Horizontal"
+               Value="0" 
+               Name="scrollBarLevel"
+               ValueChanged="ScrollBar_ValueChanged"/>
+            <Label x:Name="labelLevel" 
+               Grid.Row="0" 
+               Content="Level:Easy"
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Top"/>
+        </Grid>
+        <CheckBox x:Name="CheckBoxCaseSensitive" 
+                     Grid.Column="4" 
+                     Content="Case Sensitive" 
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     Focusable="False"
+                     Checked="CheckBox_Checked" Margin="6,0,0,0"/>
+        <!-- Другий рядок -->
+        <RichTextBox Grid.Row="1" 
+                 Grid.ColumnSpan="3" 
+                 Margin="5,5,5,5"
+                 Name="MyRichTextBox"/>
+        <Button 
+                Name="buttonStart"
+                Grid.Row="1" 
+                Grid.Column="3"
+                Margin="5,0,0,0"
+                Height="40"
+                Width="90"
+                Content="Start"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Focusable="False"
+                Click="StartButtonClick" Grid.ColumnSpan="2" Background="#FF15AE12"/>
+        <Button 
+                Name="buttonStop"
+                Grid.Row="1" 
+                Grid.Column="4"
+                Margin="58,0,0,0"
+                Height="40"
+                Width="90"
+                Content="Stop"
+                HorizontalAlignment="Left"
+                Focusable="False"
+                VerticalAlignment="Center" Click="buttonStop_Click" Background="#FFEB0D0D"/>
+        <!-- Третій рядок -->
+        <Grid Grid.Row="2" Grid.ColumnSpan="5" Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Button Name="ButtonApostrophe" Content="`" Height="40" Width="40" Margin="3" />
+                <Button Name="Button1" Content="1" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="Button2" Content="2" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="Button3" Content="3" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="Button4" Content="4" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="Button5" Content="5" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="Button6" Content="6" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="Button7" Content="7" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="Button8" Content="8" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="Button9" Content="9" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="Button0" Content="0" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonMinus" Content="-" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonEquals" Content="=" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonBackspace" Content="Backspace" Height=" 40" Width="80" Margin="3"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button Name="ButtonTab"  Content="Tab" Height=" 40" Width="60" Margin="3"/>
+                <Button Name="ButtonQ" Content="q" Height=" 40" Width="40" Margin="3"/>
+
+                <Button Name="ButtonW" Content="w" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonE" Content="e" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonR" Content="r" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonT" Content="t" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonY" Content="y" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonU" Content="u" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonI" Content="i" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonO" Content="o" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonP" Content="p" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonOpeningSquareBrackets" Content="[" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonClothingSquareBrackets" Content="]" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonSlash" Content="\" Height=" 40" Width="60" Margin="3"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <Button Name="ButtonCapsLock" Content="Caps Lock" Height=" 40" Width="80" Margin="3"/>
+                <Button Name="ButtonA" Content="a" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonS" Content="s" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonD" Content="d" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonF" Content="f" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonG" Content="g" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonH" Content="h" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonJ" Content="j" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonK" Content="k" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonL" Content="l" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonSemicolon" Content=";" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonMark" Content="'" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonEnter" Content="Enter" Height=" 40" Width="86" Margin="3"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal">
+                <Button Name="ButtonLeftShift" Content="Shift" Height=" 40" Width="100" Margin="3"/>
+                <Button Name="ButtonZ" Content="z" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonX" Content="x" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonC" Content="c" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonV" Content="v" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonB" Content="b" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonN" Content="n" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonM" Content="m" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonComma" Content="," Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonPoint" Content="." Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonBackslash" Content="/" Height=" 40" Width="40" Margin="3"/>
+                <Button Name="ButtonRightShift" Content="Shift" Height=" 40" Width="112" Margin="3"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Orientation="Horizontal">
+                <Button Name="ButtonLeftCtrl" Content="Ctrl" Height=" 40" Width="60" Margin="3"/>
+                <Button Name="ButtonLeftWin" Content="Win" Height=" 40" Width="60" Margin="3"/>
+                <Button Name="ButtonLeftAlt" Content="Alt" Height=" 40" Width="60" Margin="3"/>
+                <Button Name="ButtonSpace" Content="Space" Height=" 40" Width="283" Margin="3"/>
+                <Button Name="ButtonRightAlt" Content="Alt" Height=" 40" Width="60" Margin="3"/>
+                <Button Name="ButtonRightWin" Content="Win" Height=" 40" Width="60" Margin="3"/>
+                <Button Name="ButtonRightCtrl" Content="Ctrl" Height=" 40" Width="60" Margin="3"/>
+                <Button Name="ButtonExit" Content="Exit" Height=" 40" Width="80" Margin="3" Background="#FFEB0D0D" Click="ButtonExit_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
+
+
